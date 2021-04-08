@@ -28,6 +28,11 @@ int main(void) {
 	acumuladorNumeros += numeros[i];
     }
 
+	for(i=0; i<5; i++)
+	{
+	printf("Los números son: %d \n", numeros[i]);
+	}
+
 	printf("El resultado de los 5 números sumados es: %d", acumuladorNumeros);
 
 	return EXIT_SUCCESS;
