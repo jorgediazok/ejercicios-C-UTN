@@ -5,6 +5,10 @@
  Version     :
  Copyright   : Your copyright notice
  Description : Hello World in C, Ansi-style
+
+ Se tienen las notas del primer parcial de los alumnos de dos cursos, el curso A
+ y el curso B, cada curso cuenta con 5 alumnos. Realizar un programa que muestre
+ el curso que obtuvo el mayor promedio general.
  ============================================================================
  */
 
@@ -49,7 +53,19 @@ int main(void) {
 	promedioB=suma2/5;
 
 	printf("Promedio del curso A: %d  \n", promedioA);
-	printf("Promedio del curso B: %d", promedioB);
+	printf("Promedio del curso B: %d \n", promedioB);
+
+	if(promedioA == promedioB)
+	{
+		printf("Los cursos A y B tienen el mismo promedio.");
+	}else{
+		if(promedioA > promedioB)
+		{
+			printf("El curso A tiene mejor promedio que el curso B.");
+		}else{
+			printf("El curso B tiene mejor promedio que el curso A.");
+		}
+	}
 
 	return EXIT_SUCCESS;
 }
