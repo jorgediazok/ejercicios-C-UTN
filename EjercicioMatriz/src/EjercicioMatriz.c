@@ -38,5 +38,18 @@ int main(void) {
 
 	//Cargar los apellidos
 
+	for(i=0;i<CANTIDAD_CLIENTES;i++)
+	{
+		getString(MSG_INGRESOAP, auxApellido);
+
+		strcpy(arrayApellidos[i], auxApellido);
+	}
+
+	//Ordenar 2 arrays
+
+
+
+
+
 	return EXIT_SUCCESS;
 }
