@@ -21,11 +21,15 @@ int main(void) {
 	setbuf(stdout, NULL);
 
 	int valor = 0;
+	int z = 10;
+
 	printf("%d \n", valor);
 	incrementar(&valor);
 	printf("%d \n", valor); //Ahora vale 1
 	incrementar(&valor);
 	printf("%d \n", valor); //Ahora vale 2
+	incrementar(&z);
+	printf("%d \n", z); //Devuelve 11
 
 
 
