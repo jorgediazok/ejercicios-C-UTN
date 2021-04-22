@@ -90,7 +90,7 @@ void cargaArrayString(char array[][20], int lenArray)
 	int i;
 	for(i=0; i<lenArray;i++)
 	{
-		printf("Ingrese apellido: \n");
+		printf("Ingrese palabra/s: \n");
 		fflush(stdin);
 		scanf("%s", array[i]);
 	}

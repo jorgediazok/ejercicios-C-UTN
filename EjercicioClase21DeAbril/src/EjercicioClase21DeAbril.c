@@ -48,7 +48,6 @@ int main(void) {
 	cargaArrayString(apellidos, ALUMNOS_LEN);
 
 
-
 	return EXIT_SUCCESS;
 }
 
