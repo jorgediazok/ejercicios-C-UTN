@@ -20,7 +20,7 @@ void incrementar(int *pe);
 int main(void) {
 	setbuf(stdout, NULL);
 
-	int valor = 0;
+	int valor = 0;  //Para que funcione la variable debe estar inicializada
 	int z = 10;
 
 	printf("%d \n", valor);
