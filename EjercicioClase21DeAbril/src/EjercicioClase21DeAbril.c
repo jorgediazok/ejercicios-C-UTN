@@ -31,6 +31,7 @@ int main(void) {
 	char apellidos[ALUMNOS_LEN][20];
 
 	//Inicializar arrays
+	limpiarArrayEntero(legajos, ALUMNOS_LEN);
 	limpiarArrayChar(sexo, ALUMNOS_LEN);
 	limpiarArrayEntero(edades, ALUMNOS_LEN);
 	limpiarArrayEntero(notaUno, ALUMNOS_LEN);

@@ -10,6 +10,8 @@
 #include <string.h>
 #include <ctype.h>
 
+//Para inicializar los arrays
+
 void limpiarArrayEntero(int array[], int lenArray)
 {
 	int i;
@@ -43,8 +45,53 @@ void limpiarArrayChar(char array[], int lenArray)
 void limpiarArrayString(char array[], int lenArray)
 {
 	int i;
+
 	for(i=0;i<lenArray;i++)
 	{
 		strcpy(array[i], ' ');
+	}
+}
+
+
+//Para cargar los arrays
+
+void cargaArrayEntero(int array[], int lenArray)
+{
+	int i;
+	for(i=0;i<lenArray;i++)
+	{
+		printf("Ingrese número: \n");
+		scanf("%d", &array[i]);
+	}
+}
+
+void cargaArrayFloat(float array[], int lenArray)
+{
+	int i;
+	for(i=0;i<lenArray;i++)
+	{
+		printf("Ingrese número: \n");
+		scanf("%f", &array[i]);
+	}
+}
+
+void cargaArrayChar(char array[], int lenArray)
+{
+	int i;
+	for(i=0;i<lenArray;i++)
+	{
+		printf("Ingrese sexo: m/f \n");
+		scanf("%c", &array[i]);
+	}
+}
+
+void cargaArrayString(char array[][20], int lenArray)
+{
+	int i;
+	for(i=0; i<lenArray;i++)
+	{
+		printf("Ingrese apellido: \n");
+		fflush(stdin);
+		scanf("%s", array[i]);
 	}
 }
