@@ -78,5 +78,15 @@ int main(void) {
 
 	}
 
+	//Si hay que hacer un swapeo
+//	for(i=0; i<3; i++)
+//	{
+//		int j;
+//		int auxVec = vecAmigos[i];
+//		vecAmigos[i] = vecAmigos[j];
+//		vecAmigos[j] = auxVec;
+//
+//	}
+
 	return EXIT_SUCCESS;
 }
