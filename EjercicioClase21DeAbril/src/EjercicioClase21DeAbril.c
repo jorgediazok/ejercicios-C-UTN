@@ -40,12 +40,19 @@ int main(void) {
 	limpiarArrayString(apellidos, ALUMNOS_LEN);
 
 	//Carga de data
-	cargaArrayEntero(legajos, ALUMNOS_LEN);
-	cargaArrayChar(sexo, ALUMNOS_LEN);
-	cargaArrayEntero(edades, ALUMNOS_LEN);
-	cargaArrayEntero(notaUno, ALUMNOS_LEN);
-	cargaArrayEntero(notaDos, ALUMNOS_LEN);
-	cargaArrayString(apellidos, ALUMNOS_LEN);
+
+	int i;
+
+	for(i=0;i<ALUMNOS_LEN;i++)
+	{
+		cargaArrayEntero(legajos, ALUMNOS_LEN);
+		cargaArrayChar(sexo, ALUMNOS_LEN);
+		cargaArrayEntero(edades, ALUMNOS_LEN);
+		cargaArrayEntero(notaUno, ALUMNOS_LEN);
+		cargaArrayEntero(notaDos, ALUMNOS_LEN);
+		cargaArrayString(apellidos, ALUMNOS_LEN);
+	}
+
 
 
 	return EXIT_SUCCESS;

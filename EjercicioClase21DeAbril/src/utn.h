@@ -17,11 +17,10 @@ void limpiarArrayString(char array[][20], int lenArray);
 
 //Carga de arrays
 
-void cargaArrayEntero(int array[], int lenArray);
-void cargaArrayFloat(float array[], int lenArray);
-void cargaArrayChar(char array[], int lenArray);
-void cargaArrayString(char array[][20], int lenArray);
-
+int cargaArrayEntero(int array[], int lenArray);
+int cargaArrayFloat(float array[], int lenArray);
+int cargaArrayChar(char array[], int lenArray);
+int cargaArrayString(char array[][20], int lenArray);
 
 
 #endif /* UTN_H_ */

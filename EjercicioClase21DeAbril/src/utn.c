@@ -48,14 +48,14 @@ void limpiarArrayString(char array[], int lenArray)
 
 	for(i=0;i<lenArray;i++)
 	{
-		strcpy(array[i], ' ');
+		strcpy(array[i], " ");
 	}
 }
 
 
 //Para cargar los arrays
 
-void cargaArrayEntero(int array[], int lenArray)
+int cargaArrayEntero(int array[], int lenArray)
 {
 	int i;
 	for(i=0;i<lenArray;i++)
@@ -63,9 +63,10 @@ void cargaArrayEntero(int array[], int lenArray)
 		printf("Ingrese número: \n");
 		scanf("%d", &array[i]);
 	}
+	return 0;
 }
 
-void cargaArrayFloat(float array[], int lenArray)
+int cargaArrayFloat(float array[], int lenArray)
 {
 	int i;
 	for(i=0;i<lenArray;i++)
@@ -73,19 +74,22 @@ void cargaArrayFloat(float array[], int lenArray)
 		printf("Ingrese número: \n");
 		scanf("%f", &array[i]);
 	}
+	return 0;
 }
 
-void cargaArrayChar(char array[], int lenArray)
+int cargaArrayChar(char array[], int lenArray)
 {
 	int i;
 	for(i=0;i<lenArray;i++)
 	{
+		fflush(stdin);
 		printf("Ingrese sexo: m/f \n");
 		scanf("%c", &array[i]);
 	}
+	return 0;
 }
 
-void cargaArrayString(char array[][20], int lenArray)
+int cargaArrayString(char array[][20], int lenArray)
 {
 	int i;
 	for(i=0; i<lenArray;i++)
@@ -94,4 +98,5 @@ void cargaArrayString(char array[][20], int lenArray)
 		fflush(stdin);
 		scanf("%s", array[i]);
 	}
+	return 0;
 }
