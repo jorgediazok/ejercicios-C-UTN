@@ -16,41 +16,44 @@
 #include <string.h>
 #include "utn.h"
 
-#define ALUMNOS_LEN 5
+#define TAM 5
 
 
 int main(void) {
+
 	setbuf(stdout, NULL);
 
-	int legajos[ALUMNOS_LEN];
-	char sexo[ALUMNOS_LEN];
-	int edades[ALUMNOS_LEN];
-	int notaUno[ALUMNOS_LEN];
-	int notaDos[ALUMNOS_LEN];
-	float promediosNotas[ALUMNOS_LEN];
-	char apellidos[ALUMNOS_LEN][20];
+	int legajos[TAM];
+	int edades[TAM];
+	int notaUno[TAM];
+	int notaDos[TAM];
+	float promediosNotas[TAM];
+	char sexo[TAM];
+	char apellidos[TAM][20];
+	char auxApellido[20];
+	int i;
 
 	//Inicializar arrays
-	limpiarArrayEntero(legajos, ALUMNOS_LEN);
-	limpiarArrayChar(sexo, ALUMNOS_LEN);
-	limpiarArrayEntero(edades, ALUMNOS_LEN);
-	limpiarArrayEntero(notaUno, ALUMNOS_LEN);
-	limpiarArrayEntero(notaDos, ALUMNOS_LEN);
-	limpiarArrayFloat(promediosNotas, ALUMNOS_LEN);
-	limpiarArrayString(apellidos, ALUMNOS_LEN);
+	limpiarArrayEntero(legajos, TAM);
+	limpiarArrayChar(sexo, TAM);
+	limpiarArrayEntero(edades, TAM);
+	limpiarArrayEntero(notaUno, TAM);
+	limpiarArrayEntero(notaDos, TAM);
+	limpiarArrayFloat(promediosNotas, TAM);
+	limpiarArrayString(apellidos, TAM);
 
 	//Carga de data
 
 	int i;
 
-	for(i=0;i<ALUMNOS_LEN;i++)
+	for(i=0;i<TAM;i++)
 	{
-		cargaArrayEntero(legajos, ALUMNOS_LEN);
-		cargaArrayChar(sexo, ALUMNOS_LEN);
-		cargaArrayEntero(edades, ALUMNOS_LEN);
-		cargaArrayEntero(notaUno, ALUMNOS_LEN);
-		cargaArrayEntero(notaDos, ALUMNOS_LEN);
-		cargaArrayString(apellidos, ALUMNOS_LEN);
+		cargaArrayEntero(legajos, TAM);
+		cargaArrayChar(sexo, TAM);
+		cargaArrayEntero(edades, TAM);
+		cargaArrayEntero(notaUno, TAM);
+		cargaArrayEntero(notaDos, TAM);
+		cargaArrayString(apellidos, TAM);
 	}
 
 
