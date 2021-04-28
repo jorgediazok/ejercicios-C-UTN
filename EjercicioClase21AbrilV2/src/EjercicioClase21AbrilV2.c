@@ -1,7 +1,7 @@
 /*
  ============================================================================
  Name        : EjercicioClase21AbrilV2.c
- Author      : 
+ Author      : Jorge Díaz
  Version     :
  Copyright   : Your copyright notice
  Description : Hello World in C, Ansi-style
@@ -18,8 +18,10 @@ void inicializarArrayInt(int array[], int tamano);
 void inicializarArrayFloat(float array[], int tamano);
 void inicializarArrayChar(char array[], int tamano);
 void inicializarArrayString(char array[][20], int tamano);
-int utn_getArrayInt(int numero[], char *mensaje, char *mensajeError, int minimo, int maximo, int intentos);
-
+void utn_getArrayInt(int numero[], char *mensaje, char *mensajeError, int minimo, int maximo, int intentos);
+void utn_getArrayChar(char character[], char* mensaje, char*mensajeError);
+void utn_getString(char arrayString[][20], char* mensaje);
+void calcularPromedio(float prom, int nota1, int nota2);
 
 
 int main(void) {
@@ -44,19 +46,24 @@ int main(void) {
 	inicializarArrayString(apellido, LARGO);
 
 	for(int i = 0; i < LARGO ; i++){
-		utn_getArrayInt(&legajo[i], "Ingrese un legajo\n", "Error, intente nuevamente\n", 1 , 10000, 3);
-	};
+		utn_getArrayInt(&legajo[i], "Ingrese un legajo:", "Error, intente nuevamente\n", 1 , 10000, 3);
+		utn_getArrayInt(&edad[i], "Ingrese una edad:", "Error. Ingrese una edad correcta", 1, 120, 3);
+		utn_getArrayInt(&nota1[i], "Ingrese una nota:", "Error. Ingrese una nota entre 1 y 10", 1, 10, 3);
+		utn_getArrayInt(&nota2[i], "Ingrese una nota:", "Error. Ingrese una nota entre 1 y 10", 1, 10, 3);
+		utn_getArrayChar(&sexo[i], "Ingrese sexo: f/m \n", "Error. Ingrese sexo correcto");
+		utn_getString(&apellido[i], "Ingrese apellido: \n");
+	}
 
 
 	for(int i = 0; i < LARGO ; i++){
 
-					printf("%d legajo %d ",i , legajo[i]);
-					printf("  sexo %c " , sexo[i]);
-					printf("  edad %d " ,edad[i]);
-					printf("  nota1 %d " ,nota1[i]);
-					printf("  nota2 %d " ,nota2[i]);
-					printf("  promedio %.2f " ,promedio[i]);
-					printf("  apellido %s \n" ,apellido[i]);
+					printf("\n%d legajo: %d ",i , legajo[i]);
+					printf("  sexo: %c " , sexo[i]);
+					printf("  edad: %d " ,edad[i]);
+					printf("  nota 1: %d " ,nota1[i]);
+					printf("  nota 2: %d " ,nota2[i]);
+					printf("  promedio: %.2f " ,promedio[i]);
+					printf("  apellido: %s \n" ,apellido[i]);
 
 				};
 
@@ -89,7 +96,7 @@ void inicializarArrayString(char array[][20], int tamano){
 }
 
 
-int utn_getArrayInt(int numero[], char *mensaje, char *mensajeError, int minimo, int maximo, int intentos){
+void utn_getArrayInt(int numero[], char *mensaje, char *mensajeError, int minimo, int maximo, int intentos){
 
 	int bufferInt ; //variable auxiliar;
 
@@ -103,12 +110,27 @@ int utn_getArrayInt(int numero[], char *mensaje, char *mensajeError, int minimo,
 				intentos--;
 			};
 		}
-
-	return 0;
 };
 
+void utn_getArrayChar(char character[], char* mensaje, char* mensajeError)
+{
+	printf(mensaje);
+	fflush(stdin);
+	scanf("%c", character);
+}
+
+void utn_getString(char arrayString[][20], char* mensaje)
+{
+	printf(mensaje);
+	fflush(stdin);
+	scanf("%s", arrayString);
+}
 
 
+void calcularPromedio(float prom, int nota1, int nota2)
+{
+	prom = (float)(nota1 + nota2) / 2;
+}
 
 
 
