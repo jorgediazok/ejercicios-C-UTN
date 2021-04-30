@@ -144,7 +144,7 @@ int buscarEmpty(DatosAlumnos array[], int tamanio, int* posicion)
 }
 
 
-void altaAlumnos(DatosAlumnos array[], tamanio)
+void altaAlumnos(DatosAlumnos array[], int tamanio)
 
 {
 	int i;
@@ -194,15 +194,17 @@ int bajaAlumnos(DatosAlumnos array[], int tamanio)
 		while(respuesta != 's' && respuesta != 'n')
 		{
 			printf("Desea eliminar esto?: \n");
-			mostrarEstudiante(array[posicion], 0);
+			mostrarEstudiante(array[posicion]);
 			fflush(stdin);
-			validacion = scanf("%c", &respuesta);		}
+			validacion = scanf("%c", &respuesta);
+		}
 	}
 
 	if(respuesta == 's')
 	{
 		array[posicion].isEmpty = 1;
 	}
+
   return 0;
 }
 
@@ -226,13 +228,13 @@ int buscarLegajo(DatosAlumnos array[], int tamanio, int legajo)
 
 void imprimirEstudiantes(DatosAlumnos array[], int tamanio)
 {
-	printf("\ Legajo    Sexo    Nota1    Nota2     Estudiante");
+	printf("\n Legajo    Sexo    Nota1    Nota2     Estudiante");
 
 	for(int i = 0; i<tamanio; i++)
 	{
 		if(array[i].isEmpty == 0)
 		{
-			mostrarEstudiante(array[i], 1);
+			mostrarEstudiante(array[i]);
 		}
 	}
 }
