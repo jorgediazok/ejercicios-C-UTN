@@ -36,24 +36,27 @@ typedef struct{
 	int isEmpty;
 }DatosAlumnos;
 
-int inicializarAlumnos(DatosAlumnos* alumnos, int tamano);
-void menuInicio(int* select);
-void altaAlumnos(DatosAlumnos array[], int posicion);
-int buscarLegajo(DatosAlumnos arrayAlumnos[], int tamanio, int legajo);
-
-
 #define TOTAL_ALUMNOS 5
+
+int inicializarAlumnos(DatosAlumnos* alumnos, int tamanio);  //Inicializar Arrays
+int buscarEmpty(DatosAlumnos array[], int tamanio, int* posicion); //Buscar array empty para llenar con datos
+void menuInicio(int* select);
+void altaAlumnos(DatosAlumnos array[], int tamanio);
+void imprimirEstudiantes(DatosAlumnos array[], int tamanio);  //OK
+int mostrarEstudiante(DatosAlumnos alumno); //OK
+int buscarLegajo(DatosAlumnos array[], int tamanio, int legajo);
+
+
 
 
 int main(void) {
 	setbuf(stdout, NULL);
 
-	DatosAlumnos arrayAlumnos[TOTAL_ALUMNOS];
-	inicializarAlumnos(arrayAlumnos, TOTAL_ALUMNOS);
+	DatosAlumnos array[TOTAL_ALUMNOS];
+	inicializarAlumnos(array, TOTAL_ALUMNOS);
 
-	int posicion;
 	int opcion;
-	char salir = 'n';
+	char salir = 's';
 
 	while(salir != 's')
 	{
@@ -61,14 +64,18 @@ int main(void) {
 
 		switch(opcion)
 		{
-		case 1:
-			altaAlumnos(arrayAlumnos, posicion);
+		case 1: //ALTA
+			altaAlumnos(array, TOTAL_ALUMNOS);
 			break;
-		case 2:
+		case 2: //BAJA
 			break;
-		case 3:
+		case 3: //MODIFICAR
 			break;
-		case 4:
+		case 4: //LISTAR
+			break;
+		case 5: //ORDENAR
+			break;
+		case 6: //SALIR
 			printf("Seguro desea salir? s/n \n");
 			system("pause");
 			break;
@@ -79,13 +86,13 @@ int main(void) {
 }
 
 
-int inicializarAlumnos(DatosAlumnos* alumnos, int tamano)
+int inicializarAlumnos(DatosAlumnos* alumnos, int tamanio)
 {
 	int error = -1;
 
-	if(alumnos != NULL && tamano > 0)
+	if(alumnos != NULL && tamanio > 0)
 	{
-		for(int i=0; i<tamano; i++)
+		for(int i=0; i < tamanio; i++)
 		{
 			alumnos[i].isEmpty = 1; //Pone cada campo is empty array en 1, o sea está disponible/libre
 		}
@@ -96,6 +103,7 @@ int inicializarAlumnos(DatosAlumnos* alumnos, int tamano)
 	return error;
 
 }
+
 
 void menuInicio(int* select)
 {
@@ -114,42 +122,98 @@ void menuInicio(int* select)
 
 }
 
-
-void altaAlumnos(DatosAlumnos array[], int posicion)
-
+int buscarEmpty(DatosAlumnos array[], int tamanio, int* posicion)
 {
-	if(array[posicion].isEmpty == 0)
+	int i;
+	int retorno = -1;
 
+	if(array !=  NULL && posicion != NULL && tamanio > 0)
 	{
-	printf("\nIngrese legajo");
-	scanf("%d", &array[posicion].legajo);
-
-	printf("\nIngrese su sexo");
-	fflush(stdin);
-	scanf("%c", &array[posicion].sexo);
-
-	printf("\nIngrese su edad");
-	scanf("%d", &array[posicion].edad);
-
-	printf("\nIngrese nota 1");
-	scanf("%d", &array[posicion].nota1);
-
-	printf("\nIngrese nota 2");
-	scanf("%d", &array[posicion].nota2);
-
-	printf("\nIngrese su apellido");
-	gets(array[posicion].apellido);
+		for(i=0; i < tamanio; i++)
+		{
+			if(array[i].isEmpty == 1)
+			{
+				retorno = 0;
+				*posicion = i;
+				break;
+			}
+		}
 	}
 
+	return retorno;
 }
 
-int buscarLegajo(DatosAlumnos arrayAlumnos[], int tamanio, int legajo)
+
+void altaAlumnos(DatosAlumnos array[], tamanio)
+
+{
+	int i;
+
+	for(i=0; i<tamanio; i++)
+	{
+		if(array[i].isEmpty == 0)
+		{
+			printf("\nIngrese legajo");
+			scanf("%d", &array[i].legajo);
+
+			printf("\nIngrese su sexo");
+			fflush(stdin);
+			scanf("%c", &array[i].sexo);
+
+			printf("\nIngrese su edad");
+			scanf("%d", &array[i].edad);
+
+			printf("\nIngrese nota 1");
+			scanf("%d", &array[i].nota1);
+
+			printf("\nIngrese nota 2");
+			scanf("%d", &array[i].nota2);
+
+			printf("\nIngrese su apellido");
+			gets(array[i].apellido);
+			}
+
+	}
+}
+
+
+int bajaAlumnos(DatosAlumnos array[], int tamanio)
+{
+	int legajo;
+	char respuesta;
+	int posicion;
+	int validacion;
+	printf("Qué legajo desea dar de baja?: \n");
+	scanf("%d", &legajo);
+	fflush(stdin);
+
+	posicion = buscarLegajo(array, tamanio, legajo);
+
+	if(posicion != -1)
+	{
+		while(respuesta != 's' && respuesta != 'n')
+		{
+			printf("Desea eliminar esto?: \n");
+			mostrarEstudiante(array[posicion], 0);
+			fflush(stdin);
+			validacion = scanf("%c", &respuesta);		}
+	}
+
+	if(respuesta == 's')
+	{
+		array[posicion].isEmpty = 1;
+	}
+  return 0;
+}
+
+
+int buscarLegajo(DatosAlumnos array[], int tamanio, int legajo)
 {
 	int ret = -1;
 
 	for(int i = 0; i < tamanio; i++)
 	{
-		if(arrayAlumnos[i].isEmpty == 0 && arrayAlumnos[i].legajo == legajo)
+		if(array[i].isEmpty == 0 && array[i].legajo == legajo)
 		{
 			ret = 1;
 			break;
@@ -160,3 +224,23 @@ int buscarLegajo(DatosAlumnos arrayAlumnos[], int tamanio, int legajo)
 }
 
 
+void imprimirEstudiantes(DatosAlumnos array[], int tamanio)
+{
+	printf("\ Legajo    Sexo    Nota1    Nota2     Estudiante");
+
+	for(int i = 0; i<tamanio; i++)
+	{
+		if(array[i].isEmpty == 0)
+		{
+			mostrarEstudiante(array[i], 1);
+		}
+	}
+}
+
+
+int mostrarEstudiante(DatosAlumnos alumno)
+{
+	printf("\ %-5d    %-5c     %-5d     %-5d     %5s", alumno.legajo, alumno.sexo, alumno.nota1, alumno.nota2, alumno.apellido);
+
+	return 0;
+}
