@@ -23,6 +23,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#define TOTAL_ALUMNOS 5
 
 
 typedef struct{
@@ -36,17 +37,14 @@ typedef struct{
 	int isEmpty;
 }DatosAlumnos;
 
-#define TOTAL_ALUMNOS 5
 
+void menuInicio(int* select);
 int inicializarAlumnos(DatosAlumnos* alumnos, int tamanio);  //Inicializar Arrays
 int buscarEmpty(DatosAlumnos array[], int tamanio, int* posicion); //Buscar array empty para llenar con datos
-void menuInicio(int* select);
+int buscarLegajo(DatosAlumnos array[], int tamanio, int legajo);
 void altaAlumnos(DatosAlumnos array[], int tamanio);
 void imprimirEstudiantes(DatosAlumnos array[], int tamanio);  //OK
 int mostrarEstudiante(DatosAlumnos alumno); //OK
-int buscarLegajo(DatosAlumnos array[], int tamanio, int legajo);
-
-
 
 
 int main(void) {
