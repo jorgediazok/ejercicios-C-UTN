@@ -44,7 +44,9 @@ int mostrarSiCargo(Estudiante *array, int len);
 int buscarLegajo(Estudiante array[], int len, int legajo);
 int buscarLibre(Estudiante array[], int len, int *posicion);
 int altaEstudiante(Estudiante array[], int len);
+int bajaEstudiante(Estudiante array[], int len);
 void mostrarEstudiantes(Estudiante array[], int len);
+
 
 
 int main(void) {
@@ -72,6 +74,10 @@ int main(void) {
 				}
 				break;
 			case 2: //BAJA
+				if(buscarLibre(array, TAM, &posicion) != -1)
+				{
+					bajaEstudiante(array, TAM);
+				}
 				break;
 			case 3: //MODIFICAR
 				break;
@@ -191,32 +197,56 @@ int altaEstudiante(Estudiante array[], int len)
 
 //Baja estudiante
 
-/*
 int bajaEstudiante(Estudiante array[], int len)
 {
 	int legajo;
 	char respuesta;
-	int posicion;
-	int validacion;
-	printf("Qué legajo desea dar de baja?: ");
+	int i;
+	int retorno;
+	printf("Ingrese legajo que desea dar de baja: ");
 	scanf("%d", &legajo);
 	fflush(stdin);
 
-	posicion = buscarLegajo(array, len, legajo);
-
-	if(posicion != 1)
+	for(i=0;i<len;i++)
 	{
-		printf("Desea eliminar el legajo: \n");
+		if(legajo == array[i].legajo)
+		{
+			printf("\n El legajo del alumno es: %d\n", array[i].legajo);
+			printf("\n El sexo del alumno es: %c\n", array[i].sexo);
+			printf("\n La edad del alumno es: %d\n", array[i].edad);
+			printf("\n La nota1 del alumno es: %d\n", array[i].nota1);
+			printf("\n La nota2 del alumno es: %d\n", array[i].nota2);
+	//		printf("\n El promedio del alumno es: %f\n", array[i].promedio);
+			printf("\n El apellido del alumno es: %s\n", array[i].apellido);
+			printf("\nEstos son los datos del alumno con el legajo %d. ¿Desea eliminarlo? s/n ", legajo);
+			scanf("%c", &respuesta);
+			if(respuesta == 's'){
+				printf("El alumno con el legajo %d se eliminó correctamente\n", legajo);
+				array[i].isEmpty = 1;
+				retorno = 1;
+			}
+			else
+			{
+				if(respuesta == 'n')
+				{
+					printf("Eliminación cancelada. No se eliminó al alumno del legajo %d \n", legajo);
+					retorno = -1;
+				}
+			}
 
+		}
 	}
+	return retorno;
+
 }
-*/
 
 //Mostrar Estudiantes
 
 void mostrarEstudiantes(Estudiante array[], int len)
 {
 	int i;
+
+	printf("\n///LEGAJOS UTN///\n");
 
 	for(i=0; i < len; i++)
 	{
