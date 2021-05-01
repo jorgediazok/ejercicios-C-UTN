@@ -40,10 +40,11 @@ typedef struct{
 
 void menuInicio(int* opcion);
 int inicializarEstudiantes(Estudiante array[], int len);
+int mostrarSiCargo(Estudiante *array, int len);
 int buscarLegajo(Estudiante array[], int len, int legajo);
 int buscarLibre(Estudiante array[], int len, int *posicion);
-int altaEstudiante(Estudiante array[], int len, int posicion);
-void imprimirLegajos(Estudiante array[], int len);
+int altaEstudiante(Estudiante array[], int len);
+void mostrarEstudiantes(Estudiante array[], int len);
 
 
 int main(void) {
@@ -64,15 +65,18 @@ int main(void) {
 			switch(opcion)
 			{
 			case 1: //ALTA
-				buscarLibre(array, TAM, &posicion);
-				altaEstudiante(array, TAM, posicion);
+
+				if(buscarLibre(array, TAM, &posicion) != 1)
+				{
+				  altaEstudiante(array, TAM);
+				}
 				break;
 			case 2: //BAJA
 				break;
 			case 3: //MODIFICAR
 				break;
 			case 4: //LISTAR
-				imprimirLegajos(array, TAM);
+				mostrarEstudiantes(array, TAM);
 				break;
 			case 5: //ORDENAR
 				break;
@@ -91,11 +95,12 @@ int main(void) {
 //Inicializar Array vacío
 int inicializarEstudiantes(Estudiante array[], int len)
 {
+	int i;
 	int retorno = -1;
 
 		if(array != NULL && len > 0)
 		{
-			for(int i=0; i < len; i++)
+			for(i=0; i < len; i++)
 			{
 				array[i].isEmpty = 1; //Pone cada campo is empty array en 1, o sea está disponible/libre
 			}
@@ -106,6 +111,22 @@ int inicializarEstudiantes(Estudiante array[], int len)
 		return retorno;
 
 }
+
+//Mostrar si cargó
+int mostrarSiCargo(Estudiante *array, int len)
+{
+	int i;
+
+	printf("Datos cargados");
+
+		for(i=0; i <len; i++)
+		{
+			printf("isEmpty .%d\n", array[i].isEmpty);
+		}
+
+	return 0;
+}
+
 
 //Buscar Libre
 
@@ -135,43 +156,65 @@ int buscarLibre(Estudiante array[], int len, int *posicion)
 
 //Alta de alumnos
 
-int altaEstudiante(Estudiante array[], int len, int posicion)
+int altaEstudiante(Estudiante array[], int len)
 {
 	int i;
 
 	for(i=0; i<len; i++)
 	{
-		if(buscarLibre(array, len, &posicion) != 1)
-		{
+
 			printf("\n Ingrese legajo: ");
-			scanf("%d", &array[posicion].legajo);
+			scanf("%d", &array[i].legajo);
 			printf("\n Ingrese sexo m/f: ");
 			fflush(stdin);
-			scanf("%c", &array[posicion].sexo);
+			scanf("%c", &array[i].sexo);
 			printf("\n Ingrese su edad: ");
-			scanf("%d", &array[posicion].edad);
+			scanf("%d", &array[i].edad);
 			printf("\n Ingrese Nota 1: ");
-			scanf("%d", &array[posicion].nota1);
+			scanf("%d", &array[i].nota1);
 			printf("\n Ingrese Nota 2: ");
-			scanf("%d", &array[posicion].nota2);
+			scanf("%d", &array[i].nota2);
 			array[i].promedio = ((float) array[i].nota1 + array[i].nota2) / 2;
 			printf("\n Ingrese su apellido: ");
 			fflush(stdin);
-			gets(array[posicion].apellido); //No lleva el &
+			gets(array[i].apellido); //No lleva el &
 
-			array[posicion].isEmpty = 0;
+			array[i].isEmpty = 0;
 
-		}else{
-			printf("No hay lugar, por favor de de baja otro usuario.");
-		}
 	}
+
+	printf("\n Estudiantes correctamente ingresados en el sistema. \n");
+
 
 	return 0;
 }
 
-//Imprimir Legajos
+//Baja estudiante
 
-void imprimirLegajos(Estudiante array[], int len)
+/*
+int bajaEstudiante(Estudiante array[], int len)
+{
+	int legajo;
+	char respuesta;
+	int posicion;
+	int validacion;
+	printf("Qué legajo desea dar de baja?: ");
+	scanf("%d", &legajo);
+	fflush(stdin);
+
+	posicion = buscarLegajo(array, len, legajo);
+
+	if(posicion != 1)
+	{
+		printf("Desea eliminar el legajo: \n");
+
+	}
+}
+*/
+
+//Mostrar Estudiantes
+
+void mostrarEstudiantes(Estudiante array[], int len)
 {
 	int i;
 
@@ -179,12 +222,12 @@ void imprimirLegajos(Estudiante array[], int len)
 	{
 		if(array[i].isEmpty == 0)
 		{
-			printf("\nEl número de legajo es: %d", array[i].legajo);
+			printf("\nLegajo: %d", array[i].legajo);
 			printf("\nEl sexo es: %c", array[i].sexo);
 			printf("\nLa edad es: %d", array[i].edad);
 			printf("\nLa nota 1 es: %d", array[i].nota1);
 			printf("\nLa nota 2 es: %d", array[i].nota2);
-			printf("\nEl apellido es: %s", array[i].apellido);
+			printf("\nEl apellido es: %s \n", array[i].apellido);
 		}
 	}
 }
@@ -224,7 +267,7 @@ void menuInicio(int* opcion)
 	printf("3. MODIFICAR\n");
 	printf("4. LISTAR\n");
 	printf("5. ORDENAR\n");
-	printf("6. SALIR");
+	printf("6. SALIR\n");
 
 	printf("\nSeleccione una opción del menu: ");
 	scanf("%d", opcion);
