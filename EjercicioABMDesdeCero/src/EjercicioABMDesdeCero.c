@@ -189,7 +189,7 @@ int altaEstudiante(Estudiante array[], int len)
 
 	}
 
-	printf("\n Estudiantes correctamente ingresados en el sistema. \n");
+	printf("\n Estudiante correctamente ingresado en el sistema. \n");
 
 
 	return 0;
@@ -259,6 +259,12 @@ void mostrarEstudiantes(Estudiante array[], int len)
 			printf("\nLa nota 2 es: %d", array[i].nota2);
 			printf("\nEl apellido es: %s \n", array[i].apellido);
 		}
+		else
+		{
+			printf("No hay alumnos cargados.\n");
+
+		}
+
 	}
 }
 
@@ -267,19 +273,33 @@ void mostrarEstudiantes(Estudiante array[], int len)
 
 int buscarLegajo(Estudiante array[], int len, int legajo)
 {
-	int ret = -1;
+	int retorno;
 	int i;
-
-	for(i = 0; i < len; i++)
+	for(i=0; i<len; i++)
 	{
-		if(array[i].isEmpty == 0 && array[i].legajo == legajo)
+		if(legajo == array[i].legajo)
 		{
-			ret = 1;
-			break;
+			printf("\n El legajo del alumno es: %d\n", array[i].legajo);
+			printf("\n El sexo del alumno es: %c\n", array[i].sexo);
+			printf("\n La edad del alumno es: %d\n", array[i].edad);
+			printf("\n La nota1 del alumno es: %d\n", array[i].nota1);
+			printf("\n La nota2 del alumno es: %d\n", array[i].nota2);
+			//printf("\n El promedio del alumno es: %f\n", array[i].promedio);
+			printf("\n El apellido del alumno es: %s\n", array[i].apellido);
+			retorno=1; //Posición donde está el legajo
 		}
+		break;
 	}
 
-	return ret;
+	return retorno;
+}
+
+void modificarLegajo(Estudiante array[], int len)
+{
+	int i;
+	for(i=0; i<len;i++){
+		printf("Ingrese nuevos datos para el usuario");
+	}
 }
 
 
