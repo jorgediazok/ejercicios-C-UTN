@@ -15,6 +15,8 @@
 #define EDADESSIZE 5
 
 void imprimirArrayPorReferencia(int listaDeEdades[], int len);
+float promediarArrayInt(int array[], int len);
+
 
 
 int main(void) {
@@ -22,6 +24,7 @@ int main(void) {
 
 	int edad;
 	int edades[EDADESSIZE];
+	float resultado;
 	int i;
 
 	//Recorro para cargar en forma secuencial
@@ -41,6 +44,10 @@ int main(void) {
 
 
 	imprimirArrayPorReferencia(edades, EDADESSIZE);
+	resultado = promediarArrayInt(edades, EDADESSIZE);
+
+	printf("El promedio de las edades es: %.2f", resultado);
+
 
 	return EXIT_SUCCESS;
 }
@@ -54,7 +61,7 @@ void imprimirArrayPorReferencia(int listaDeEdades[], int len)
 	int i;
 	for(i=0; i<len; i++)
 		{
-			printf("%d ", listaDeEdades[i]);
+			printf("%d \n", listaDeEdades[i]);
 		}
 }
 
@@ -75,3 +82,21 @@ void imprimirArrayPorValor(int e)
 	j = e + 7; //Leo el valor
 }
 */
+
+
+float promediarArrayInt(int array[], int len)
+{
+	int i;
+	float resultado;
+	int acumulador = 0;
+
+	for(i=0; i<len; i++)
+	{
+		acumulador += array[i];
+	}
+
+	resultado = ((float)acumulador) / len;
+
+	return resultado;
+
+}
