@@ -14,6 +14,9 @@
 
 #define EDADESSIZE 5
 
+void imprimirArrayPorReferencia(int listaDeEdades[], int len);
+
+
 int main(void) {
 	setbuf(stdout, NULL);
 
@@ -32,15 +35,43 @@ int main(void) {
 		else
 		{
 		printf("Sonaste, no tenés idea lo que es una edad.\n");
+		system("pause");
 		}
 	}
 
-	//Recorro para imprimir
 
-	for(i=0; i<EDADESSIZE; i++)
-	{
-		printf("%d ", edades[i]);
-	}
+	imprimirArrayPorReferencia(edades, EDADESSIZE);
 
 	return EXIT_SUCCESS;
 }
+
+//EL NOMBRE DEL ARRAY ES LA DIRECCIÖN DE MEMORIA DONDE COMIENZA EL ARRAY (CLAVE)
+
+//Recibir array por referencia: No se hace una copia, es el mismo. Es como el de punteros, pero como ponés corchetes funciona.
+
+void imprimirArrayPorReferencia(int listaDeEdades[], int len)
+{
+	int i;
+	for(i=0; i<len; i++)
+		{
+			printf("%d ", listaDeEdades[i]);
+		}
+}
+
+//Pasaje por referencia: Cuando llama la funcion le tenes que poner el & (&edad)
+
+/*
+void imprimirArray(int* e)
+{
+	*e = 9;   //Leo o escribo el valor
+}
+
+//Pasaje por valor:  Cuando llaman a la funcion no le pones el & (edad)
+
+void imprimirArrayPorValor(int e)
+{
+	int j;
+	//No puedo escribir la variable de afuera
+	j = e + 7; //Leo el valor
+}
+*/
