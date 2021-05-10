@@ -20,6 +20,26 @@ int utn_getNumeroFlotante(float* pResultado, char* mensaje, char* mensajeError, 
 
 int utn_getCaracter(char* pResultado, char* mensaje, char* mensajeError, char minimo, char maximo, int reintentos);
 
+//Esta función sirve para saber si lo que ingresa el usuario es en efecto un numero
+int esNumerico(char str[]);
+
+//Esta función sirve para saber si lo que ingresa el usuario es un telefono
+int esTelefono(char str[]);
+
+//Esta función sirve para saber si lo que ingresa el usuario es alfanumerico
+int esAlfanumerico(char str[]);
+
+//Esta función sirve para saber si lo que ingresa el usuario es solo letras
+int esSoloLetras(char str[]);
+
+//Estas funciones sirven para CUALQUIER pregunta con strings
+void getString(char mensaje[], char input[]);
+
+int getStringLetras(char mensaje[], char input[]);
+
+int getStringNumeros(char mensaje[], char input[]);
+
+
 
 
 

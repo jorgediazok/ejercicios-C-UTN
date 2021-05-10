@@ -55,7 +55,7 @@ int main(void) {
 
 	while(opcion != 6)
 	{
-		opcion = utn_getNumero(&opcion, "\n\n1 - ALTA \n2 - BAJA \n3 - MODIFICACION\n4 - LISTAR\n5 - ORDENAR\n6- SALIR\n\n\n", "Opción no válida", 1, 6, 2);
+		opcion = utn_getNumero(&opcion, "\n\nMENU\n\n1 - ALTA \n2 - BAJA \n3 - MODIFICACION\n4 - LISTAR\n5 - ORDENAR\n6 - SALIR\n\n\n", "Opción no válida", 1, 6, 2);
 
 		switch(opcion)
 		{
@@ -104,7 +104,7 @@ int main(void) {
 			break;
 
 		case 2:
-			if(!getStringNumeros("Ingrese el legajo a dar de baja: "), auxiliarLegajoStr)
+			if(!getStringNumeros("Ingrese el legajo a dar de baja: ", auxiliarLegajoStr))
 			{
 				printf("El legajo debe ser numérico.\n");
 				break;
