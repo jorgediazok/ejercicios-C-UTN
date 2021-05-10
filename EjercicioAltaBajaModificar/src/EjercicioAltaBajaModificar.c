@@ -64,6 +64,7 @@ int main(void) {
 				break;
 
 				case 5:
+					alumno_imprimirArray(arrayPunterosAlumno, QTY_ALUMNOS);
 				break;
 
 				case 6:
@@ -78,7 +79,7 @@ int main(void) {
 			}while(opcion != 10);
 	}
 
-	if(!alumno_initArray(arrayPunterosAlumno, QTY_ALUMNOS))
+	/*if(!alumno_initArray(arrayPunterosAlumno, QTY_ALUMNOS))
 	{
 		printf("INIT OK");
 
@@ -91,11 +92,16 @@ int main(void) {
 		{
 			printf("ALTA OK");
 		}
-	}
 
+		alumno_imprimirArray(arrayPunterosAlumno, QTY_ALUMNOS);
 
+		if(!alumno_borrarPorIdArray(arrayPunterosAlumno, QTY_ALUMNOS, 111))
+		{
+			printf("\nBORRADO OK");
+		}
 
-
+		alumno_imprimirArray(arrayPunterosAlumno, QTY_ALUMNOS);
+	}*/
 
 	return EXIT_SUCCESS;
 }
