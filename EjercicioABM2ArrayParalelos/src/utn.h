@@ -39,6 +39,4 @@ int getStringLetras(char mensaje[], char input[]);
 
 int getStringNumeros(char mensaje[], char input[]);
 
-
-
 #endif /* UTN_H_ */
