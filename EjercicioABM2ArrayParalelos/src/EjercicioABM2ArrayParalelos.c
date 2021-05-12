@@ -230,7 +230,7 @@ int buscarPrimerOcurrencia(int array[], int len, int valor)
 	{
 		if(array[i] == valor)
 		{
-			return 1;
+			return i;
 		}
 	}
 
