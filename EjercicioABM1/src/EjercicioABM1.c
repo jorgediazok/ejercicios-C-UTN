@@ -17,7 +17,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "utn.h"
-#define QTY_PERSONAS 3
+#define QTY_PERSONAS 200
 
 typedef struct
 {
