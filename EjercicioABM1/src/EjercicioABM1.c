@@ -104,6 +104,8 @@ int main(void) {
 						strcpy(arrayPersonas[indiceLugarLibre].apellido,auxiliarApellidoStr);
 						arrayPersonas[indiceLugarLibre].legajo = auxiliarLegajo;
 
+						printf("Usuario y Legajo creados");
+
 						break;
 
 					case 2:
@@ -120,6 +122,7 @@ int main(void) {
 							break;
 						}
 						arrayPersonas[indiceResultadoBusqueda].legajo = -1;
+						printf("Usuario y Legajo eliminados");
 						break;
 
 					case 3:
@@ -151,6 +154,7 @@ int main(void) {
 
 						strcpy(arrayPersonas[indiceResultadoBusqueda].nombre, auxiliarNombreStr);
 						strcpy(arrayPersonas[indiceResultadoBusqueda].apellido, auxiliarApellidoStr);
+						printf("Usuario y legajo modificados");
 
 						break;
 
@@ -189,6 +193,8 @@ int main(void) {
 								}
 							}
 						}
+						printf("Usuarios ordenados por apellido");
+
 						break;
 
 					case 6:
