@@ -18,7 +18,7 @@
 #include <string.h>
 #include "utn.h"
 
-#define QTY_CLIENTES 3
+#define QTY_CLIENTES 200
 
 void inicializarArrayInt(int array[], int len, int valor);
 int buscarPrimerOcurrencia(int array[], int len, int valor);
@@ -48,13 +48,13 @@ int main(void) {
 
 	do
 	{
-	respuesta = utn_getNumero(&opcion, "\n\nMENU\n\n1 - ALTA \n2 - BAJA \n3 - MODIFICACION\n4 - LISTAR\n5 - ORDENAR\n6 - SALIR\n\n\n", "Opción no válida", 1, 6, 2);
+	respuesta = utn_getNumero(&opcion, "\n\nMENU\n\n1 - ALTA \n2 - BAJA \n3 - MODIFICACION\n4 - LISTAR\n5 - ORDENAR\n6 - SALIR\n\n", "Opción no válida", 1, 6, 2);
 
 	if(respuesta==0)
 	{
 		switch(opcion)
 		{
-			case 1:
+			case 1: //ALTA
 			indiceLugarLibre = buscarPrimerOcurrencia(arrayLegajos, QTY_CLIENTES, -1);
 
 			if(indiceLugarLibre == -1)
@@ -65,19 +65,19 @@ int main(void) {
 
 			printf("\nALTA\n");
 
-			if(!getStringLetras("Ingrese el Nombre: ", auxiliarNombreStr))
+			if(!getStringLetras("Ingrese el Nombre: \n", auxiliarNombreStr))
 			{
 				printf("El nombre debe estar compuesto solo por letras.\n");
 				break;
 			}
 
-			if(!getStringLetras("Ingrese el Apellido: ", auxiliarApellidoStr))
+			if(!getStringLetras("Ingrese el Apellido: \n", auxiliarApellidoStr))
 			{
 				printf("El apellido debe estar compuesto solo por letras.\n");
 				break;
 			}
 
-			if(!getStringNumeros("Ingrese el legajo: ", auxiliarLegajoStr))
+			if(!getStringNumeros("Ingrese el Legajo: \n", auxiliarLegajoStr))
 			{
 				printf("El legajo debe ser numérico. \n");
 				break;
@@ -94,8 +94,109 @@ int main(void) {
 			strcpy(arrayNombres[indiceLugarLibre],auxiliarNombreStr);
 			strcpy(arrayApellidos[indiceLugarLibre], auxiliarApellidoStr);
 			arrayLegajos[indiceLugarLibre] = auxiliarLegajo;
-
+			printf("Legajo creado");
 			break;
+
+			case 2: //BAJA
+				if(!getStringNumeros("Ingrese el N° de Legajo a dar de baja: ", auxiliarLegajoStr))
+				{
+					printf("El legajo debe ser numérico");
+					break;
+				}
+
+				indiceResultadoBusqueda = buscarPrimerOcurrencia(arrayLegajos, QTY_CLIENTES, atoi(auxiliarLegajoStr));
+
+				if(indiceResultadoBusqueda == -1)
+				{
+					printf("\nNO SE ENCUENTRA ESE LEGAJO");
+					break;
+				}
+
+				arrayLegajos[indiceResultadoBusqueda] = -1; //Elimina el legajo
+				printf("Legajo Eliminado");
+				break;
+
+			case 3: //MODIFICACION
+				if(!getStringNumeros("Ingrese el N° de Legajo a Modificar: ", auxiliarLegajoStr))
+				{
+					printf("El Legajo debe ser numérico\n");
+					break;
+				}
+
+				indiceResultadoBusqueda = buscarPrimerOcurrencia(arrayLegajos, QTY_CLIENTES, atoi(auxiliarLegajoStr));
+
+				if(indiceResultadoBusqueda == -1)
+				{
+					printf("\n NO SE ENCUENTRA ESE LEGAJO");
+					break;
+				}
+
+				if(!getStringLetras("Ingrese el nombre: ", auxiliarNombreStr))
+				{
+					printf("El nombre debe estar compuesto solo por letras\n");
+					break;
+				}
+
+				if(!getStringLetras("Ingrese el apellido: ", auxiliarApellidoStr))
+				{
+					printf("El apellido debe estar compuesto solo por letras\n");
+					break;
+				}
+
+				strcpy(arrayNombres[indiceResultadoBusqueda], auxiliarNombreStr);
+				strcpy(arrayApellidos[indiceResultadoBusqueda], auxiliarApellidoStr);
+				printf("Legajo Modificado.\n");
+				break;
+
+			case 4: //LISTAR
+
+				printf("\nLISTAR\n");
+				for(i=0; i < QTY_CLIENTES;i++)
+				{
+					if(arrayLegajos[i] != -1)
+					{
+						printf("\nNOMBRE - APELLIDO - LEGAJO");
+						printf("\n%s    %s      %d", arrayNombres[i], arrayApellidos[i], arrayLegajos[i]);
+					}
+				}
+				break;
+
+			case 5: //ORDENAR
+				for(i=0; i<QTY_CLIENTES; i++)
+				{
+					if(arrayLegajos[i] == -1)
+					{
+						continue;
+					}
+
+					for(j=i+1; j<QTY_CLIENTES; j++)
+					{
+						if(arrayLegajos[j] == -1)
+						{
+							continue;
+						}
+
+						if(strcmp(arrayApellidos[i], arrayApellidos[j]))
+						{
+							strcpy(auxiliarNombreStr, arrayNombres[i]);
+							strcpy(arrayNombres[i], arrayNombres[j]);
+							strcpy(arrayNombres[j], auxiliarNombreStr);
+
+							strcpy(auxiliarApellidoStr, arrayApellidos[i]);
+							strcpy(arrayApellidos[i], arrayApellidos[j]);
+							strcpy(arrayApellidos[j], auxiliarApellidoStr);
+
+							auxiliarLegajo = arrayLegajos[i];
+							arrayLegajos[i] = arrayLegajos[j];
+							arrayLegajos[j] = auxiliarLegajo;
+						}
+					}
+				}
+				break;
+			case 6:
+				printf("Saliste del sistema");
+				exit(0);
+				break;
 
 		}
 	}
@@ -113,14 +214,10 @@ void inicializarArrayInt(int array[], int len, int valor)
 	int i;
 	for(i=0;i<len;i++)
 	{
-		int i;
-		for(i=0;i<len;i++)
-		{
-			array[i] = valor;
-		}
+		array[i] = valor;
+
 	}
 }
-
 
 //Busca la primera ocurrencia de un valor en un array de enteros. EL parámetro array es el array en el cual buscar,
 //el parametro len indica la longitud del array, el parametro valor es el valor que se busca, return si no hay

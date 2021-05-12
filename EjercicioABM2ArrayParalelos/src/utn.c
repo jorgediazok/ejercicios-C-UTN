@@ -175,7 +175,7 @@ int esTelefono(char str[])
 
 void getString(char mensaje[], char input[])
 {
-printf(mensaje);
+printf("%s", mensaje);
 scanf("%s", input);
 }
 
