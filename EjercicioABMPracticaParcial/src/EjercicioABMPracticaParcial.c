@@ -33,9 +33,6 @@ int findEmployeeById(Employee* list, int len,int id); //Encontrar Empleado
 int removeEmployee(Employee* list, int len, int id); //Eliminar Empleado
 
 
-
-
-
 int main(void) {
 	setbuf(stdout, NULL);
 
@@ -89,6 +86,8 @@ int main(void) {
 
 	return EXIT_SUCCESS;
 }
+
+//Inicializar arrays de empleados
 
 int initEmployees(Employee list[], int len)
 {
